@@ -1,0 +1,347 @@
+header {
+  background-color: #333;
+  color: #fff;
+  padding: 1rem;
+  text-align: center;
+}
+
+nav ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+nav ul li {
+  display: inline;
+  margin: 0 1rem;
+}
+
+nav ul li a {
+  color: #fff;
+  text-decoration: none;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  background-color: #f5f5f5;
+}
+
+p {
+  color: #000000;
+}
+
+h1 {
+  text-align: center;
+}
+
+h1,
+h2,
+h3 {
+  font-family: "Roboto", sans-serif;
+}
+
+.skill .progressbar {
+  background-color: black;
+}
+
+.skills-container {
+  width: 80%;
+  margin: auto;
+  padding: 20px;
+  margin-top: 50px;
+}
+
+.skill {
+  margin-bottom: 20px;
+}
+
+.skill-name {
+  margin-bottom: 5px;
+  font-size: 1.2em;
+}
+
+.progress-bar {
+  width: 100%;
+  background-color: #e0e0e0;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.progress {
+  height: 25px;
+  border-radius: 10px;
+  line-height: 25px;
+  color: white;
+  text-align: center;
+}
+
+.html {
+  width: 100%; /* Change this value to reflect your skill level */
+  background-color: #e34c26;
+}
+
+.css {
+  width: 100%; /* Change this value to reflect your skill level */
+  background-color: #264de4;
+}
+
+.javascript {
+  width: 20%; /* Change this value to reflect your skill level */
+  background-color: #f0db4f;
+}
+
+#contact {
+  background-color: #f5f5f5; /* Light Grey background for the section */
+  padding: 40px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 20px auto;
+  max-width: 800px;
+}
+
+/* Section heading */
+#contact h1 {
+  color: #000000; /* Black for the heading text */
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+
+section {
+  background-color: #ffffff; /* White background for a clean look */
+  border-radius: 8px; /* Rounded corners for a modern touch */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  padding: 40px; /* Generous padding for content spacing */
+  margin: 20px auto; /* Center the section with auto margins */
+  max-width: 800px; /* Maximum width for readability */
+}
+
+/* Heading style within the section */
+.section h1 {
+  color: #000000; /* Black color for strong emphasis */
+  font-size: 2em; /* Larger font size for section headings */
+  margin-bottom: 20px; /* Space below heading */
+  font-weight: bold; /* Bold text for importance */
+}
+
+/* Paragraph text style */
+.section p {
+  color: #333333; /* Dark grey text for readability */
+  font-size: 1em; /* Standard font size */
+  line-height: 1.6; /* Increased line height for better readability */
+}
+
+/* Add a hover effect to sections */
+.section:hover {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Slightly larger shadow on hover */
+  transition: box-shadow 0.3s ease-in-out; /* Smooth transition for shadow effect */
+}
+
+/* Styles for 5-star rating element */
+.star-rating {
+  display: inline-block;
+  font-size: 24px; /* Adjust size as needed */
+}
+
+.star {
+  color: #ffd700; /* Gold star color */
+}
+
+services-section {
+  padding: 40px;
+}
+
+.service {
+  margin-bottom: 30px;
+}
+
+.service h2 {
+  color: #007bff; /* Blue heading color */
+}
+
+.service p {
+  color: #555; /* Dark grey paragraph text color */
+}
+/* Prices page */
+
+/* General section styles */
+.pricing-intro,
+.pricing,
+.custom-quotes,
+.pricing-faq {
+  background-color: #f5f5f5; /* Light grey background for contrast */
+  padding: 40px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 20px auto;
+  max-width: 900px;
+}
+
+/* Pricing table styling */
+.pricing-table {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.pricing-item {
+  background-color: #ffffff; /* White background for individual items */
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  flex: 1;
+  min-width: 250px;
+}
+
+.pricing-item h3 {
+  color: #000000; /* Black for headings */
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+.pricing-item p {
+  color: #333333; /* Dark grey for prices */
+  font-size: 1.25em;
+  margin-bottom: 15px;
+}
+
+.pricing-item .price-za {
+  font-weight: bold; /* Emphasize ZAR price */
+}
+
+.pricing-item .price-us {
+  font-weight: normal; /* Standard weight for USD price */
+  color: #666666; /* Medium grey for secondary currency */
+}
+
+.pricing-item ul {
+  list-style-type: none;
+  padding: 0;
+  color: #666666; /* Medium grey for list items */
+}
+
+.pricing-item li {
+  margin-bottom: 10px;
+}
+
+/* Custom quotes section */
+.custom-quotes .btn {
+  display: inline-block;
+  background-color: #000000; /* Black button background */
+  color: #ffffff; /* White text */
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 1em;
+  transition: background-color 0.3s;
+}
+
+.custom-quotes .btn:hover {
+  background-color: #333333; /* Dark grey on hover */
+}
+
+/* FAQs section */
+.pricing-faq .faq-item {
+  margin-bottom: 20px;
+}
+
+.pricing-faq h3 {
+  color: #000000; /* Black for FAQ headings */
+  font-size: 1.2em;
+  margin-bottom: 5px;
+}
+
+.pricing-faq p {
+  color: #666666; /* Medium grey for FAQ answers */
+  font-size: 1em;
+}
+
+/* gallery */
+
+/* General styles for the gallery page */
+.gallery-intro {
+  background-color: #f5f5f5; /* Light grey background */
+  padding: 40px;
+  text-align: center;
+}
+
+.gallery-intro h1 {
+  color: #000000; /* Black for headings */
+  font-size: 2.5em;
+  margin-bottom: 20px;
+}
+
+.gallery-intro p {
+  color: #333333; /* Dark grey text */
+  font-size: 1.2em;
+  margin-bottom: 20px;
+}
+
+/* Gallery container */
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  padding: 20px;
+}
+
+/* Gallery item styling */
+.gallery-item {
+  position: relative;
+  width: 300px;
+  height: 200px;
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.gallery-item:hover img {
+  transform: scale(1.05); /* Slight zoom effect on hover */
+}
+
+.gallery-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.6);
+  color: #ffffff;
+  padding: 15px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.gallery-item:hover .gallery-overlay {
+  opacity: 1; /* Show overlay on hover */
+}
+
+.gallery-overlay h3 {
+  margin: 0;
+  font-size: 1.2em;
+}
+
+.gallery-overlay p {
+  font-size: 0.9em;
+}
+
+.cta-btn {
+  display: inline-block;
+  background-color: #007bff; /* Blue button background */
+  color: #ffffff; /* White text */
+  padding: 12px 24px;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 1em;
+  margin: 10px;
+  transition: background-color 0.3s;
+}
+
+.cta-btn:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
