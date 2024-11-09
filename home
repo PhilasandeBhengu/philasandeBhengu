@@ -1,0 +1,175 @@
+import React, { useState, useEffect } from 'react';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+import {
+  TrendingUp, TrendingDown, DollarSign, Calendar, Download, Filter,
+  PieChart, BarChart2, Activity, Target, AlertCircle, Check, Settings,
+  Users, ShoppingCart, Package, Clock, Repeat, Share2, Moon, Sun
+} from 'lucide-react';
+import { LineChart, Line, BarChart, Bar, XAxis, YAxis, CartesianGrid, 
+         Tooltip, ResponsiveContainer, PieChart as RePieChart, Pie, Cell, Legend } from 'recharts';
+
+const EnterpriseDashboard = () => {
+  // State Management
+  const [selectedPeriod, setSelectedPeriod] = useState('month');
+  const [selectedCurrency, setSelectedCurrency] = useState('USD');
+  const [selectedDepartment, setSelectedDepartment] = useState('all');
+  const [isEditing, setIsEditing] = useState(false);
+  const [showForecast, setShowForecast] = useState(true);
+  const [dateRange, setDateRange] = useState({ start: '2024-01-01', end: '2024-12-31' });
+  const [activeTab, setActiveTab] = useState('overview');
+  const [showAlerts, setShowAlerts] = useState(true);
+  const [darkMode, setDarkMode] = useState(false); // Dark Mode Toggle
+
+  // Currency Configuration
+  const currencies = {
+    USD: { symbol: '$', rate: 1, name: 'USD' },
+    EUR: { symbol: '€', rate: 0.91, name: 'EUR' },
+    GBP: { symbol: '£', rate: 0.79, name: 'GBP' },
+    JPY: { symbol: '¥', rate: 110.42, name: 'JPY' },
+    AUD: { symbol: 'A$', rate: 1.32, name: 'AUD' }
+  };
+
+  // Sample Financial Data Generation
+  const generateRealisticData = () => {
+    const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 
+                   'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    return months.map((month, index) => ({
+      month,
+      revenue: 150000 + Math.random() * 50000,
+      expenses: 90000 + Math.random() * 30000,
+      operatingCosts: 45000 + Math.random() * 15000,
+      marketing: 25000 + Math.random() * 10000,
+      salesCosts: 20000 + Math.random() * 8000,
+      profit: 0,
+      customers: Math.floor(1000 + Math.random() * 200),
+      orders: Math.floor(2000 + Math.random() * 500),
+      averageOrderValue: 75 + Math.random() * 25,
+      customerAcquisitionCost: 25 + Math.random() * 10
+    }));
+  };
+
+  const [financialData, setFinancialData] = useState(() => {
+    const data = generateRealisticData();
+    return data.map(month => ({
+      ...month,
+      profit: month.revenue - month.expenses
+    }));
+  });
+
+  // Format currency
+  const formatCurrency = (value, decimals = 0) => {
+    const formatter = new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: selectedCurrency,
+      minimumFractionDigits: decimals,
+      maximumFractionDigits: decimals,
+    });
+    return formatter.format(value * currencies[selectedCurrency].rate);
+  };
+
+  // Custom Metric Card Component
+  const MetricCard = ({ title, value, icon: Icon, trend, description, onClick }) => (
+    <Card className={`${darkMode ? 'bg-gray-800 text-white' : 'bg-white'} hover:shadow-lg transition-shadow duration-200`} onClick={onClick}>
+      <CardContent className="p-6">
+        <div className="flex items-center justify-between">
+          <div>
+            <p className="text-sm text-gray-500">{title}</p>
+            <h3 className="text-2xl font-bold mt-2">
+              {typeof value === 'number' ? formatCurrency(value) : value}
+            </h3>
+            {description && (
+              <p className="text-sm text-gray-600 mt-1">{description}</p>
+            )}
+          </div>
+          <div className={`p-3 rounded-full ${trend > 0 ? 'bg-green-100' : 'bg-red-100'}`}>
+            <Icon className={trend > 0 ? 'text-green-600' : 'text-red-600'} size={24} />
+          </div>
+        </div>
+        {trend !== undefined && (
+          <div className="mt-4 flex items-center">
+            <span className={`text-sm ${trend > 0 ? 'text-green-600' : 'text-red-600'}`}>
+              {trend}% {trend > 0 ? '↑' : '↓'}
+            </span>
+            <span className="text-sm text-gray-500 ml-2">vs previous period</span>
+          </div>
+        )}
+      </CardContent>
+    </Card>
+  );
+
+  // Header Controls with Dark Mode Toggle
+  const HeaderControls = () => (
+    <div className="flex flex-wrap gap-4 items-center">
+      <select
+        className="p-2 border rounded bg-white"
+        value={selectedCurrency}
+        onChange={(e) => setSelectedCurrency(e.target.value)}
+      >
+        {Object.entries(currencies).map(([code, { name }]) => (
+          <option key={code} value={code}>{name}</option>
+        ))}
+      </select>
+
+      <select
+        className="p-2 border rounded bg-white"
+        value={selectedPeriod}
+        onChange={(e) => setSelectedPeriod(e.target.value)}
+      >
+        <option value="day">Daily</option>
+        <option value="week">Weekly</option>
+        <option value="month">Monthly</option>
+        <option value="quarter">Quarterly</option>
+        <option value="year">Yearly</option>
+      </select>
+
+      <select
+        className="p-2 border rounded bg-white"
+        value={selectedDepartment}
+        onChange={(e) => setSelectedDepartment(e.target.value)}
+      >
+        {departments.map(dept => (
+          <option key={dept.id} value={dept.id}>{dept.name}</option>
+        ))}
+      </select>
+
+      <div className="flex gap-2">
+        <button
+          className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 flex items-center gap-2"
+          onClick={() => setIsEditing(!isEditing)}
+        >
+          <Settings size={16} />
+          {isEditing ? 'Save' : 'Edit'}
+        </button>
+        <button
+          className="px-4 py-2 bg-gray-600 text-white rounded hover:bg-gray-700 flex items-center gap-2"
+          onClick={() => {/* Download logic */}}
+        >
+          <Download size={16} />
+          Export
+        </button>
+        <button
+          className="px-4 py-2 bg-gray-600 text-white rounded hover:bg-gray-700 flex items-center gap-2"
+          onClick={() => setDarkMode(!darkMode)}
+        >
+          {darkMode ? <Sun size={16} /> : <Moon size={16} />}
+          {darkMode ? 'Light Mode' : 'Dark Mode'}
+        </button>
+      </div>
+    </div>
+  );
+
+  return (
+    <div className={`${darkMode ? 'bg-gray-900 text-white' : 'bg-gray-50 text-black'} p-6 space-y-6`}>
+      {/* Header */}
+      <div className="flex justify-between items-center flex-wrap gap-4">
+        <h1 className="text-2xl font-bold">Financial Analytics Dashboard</h1>
+        <HeaderControls />
+      </div>
+
+      {/* More Components and Features */}
+      {/* Place the rest of your upgraded component layout here */}
+    </div>
+  );
+};
+
+export default EnterpriseDashboard;
